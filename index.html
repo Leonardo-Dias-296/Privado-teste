@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>2 Anos 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: Quicksand;
+  transition: background .4s, color .4s;
+}
+.light {
+  background: #fffdfb;
+  color: #592e33;
+}
+.dark {
+  background: #0f0f14;
+  color: #f8dada;
+}
+
+.font-romantic { font-family: 'Dancing Script', cursive; }
+
+.polaroid {
+  background: white;
+  padding: 10px 10px 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  cursor: zoom-in;
+  transition: .3s;
+}
+.dark .polaroid { background:#1c1c28; }
+.polaroid:hover { transform: scale(1.05); }
+
+#zoom {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+#zoom img {
+  max-width: 90%;
+  max-height: 90%;
+  border: 10px solid white;
+}
+
+.heart {
+  position: fixed;
+  top: -10%;
+  font-size: 22px;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body class="light">
+
+<!-- MÚSICA -->
+<audio id="music" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- BOTÕES -->
+<div class="fixed top-4 right-4 flex gap-3 z-50">
+<button id="musicBtn" class="bg-pink-500 text-white px-4 py-2 rounded-full">🎵</button>
+<button id="darkBtn" class="bg-gray-800 text-white px-4 py-2 rounded-full">🌙</button>
+</div>
+
+<!-- ZOOM -->
+<div id="zoom" onclick="this.style.display='none'">
+  <img id="zoomImg">
+</div>
+
+<!-- HERO -->
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+  <h1 class="font-romantic text-7xl md:text-8xl mb-2">2 Anos</h1>
+  <h2 class="font-romantic text-4xl md:text-5xl mb-4">Leonardo & Vitória</h2>
+  <p class="text-pink-400 mb-8">Desde 21 de Janeiro de 2024</p>
+
+  <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
+    <div><span id="y" class="text-3xl font-bold">0</span><p>Anos</p></div>
+    <div><span id="mo" class="text-3xl font-bold">0</span><p>Meses</p></div>
+    <div><span id="d" class="text-3xl font-bold">0</span><p>Dias</p></div>
+    <div><span id="h" class="text-3xl font-bold">0</span><p>Horas</p></div>
+    <div><span id="mi" class="text-3xl font-bold">0</span><p>Min</p></div>
+    <div><span id="s" class="text-3xl font-bold">0</span><p>Seg</p></div>
+  </div>
+</section>
+
+<!-- VÍDEO -->
+<section class="py-20 text-center bg-pink-50 dark:bg-[#141421] px-6">
+  <h2 class="font-romantic text-5xl mb-8">Um Vídeo Antigo, Mais Com Um Significado Especial, Para Este Dia!  🎥</h2>
+  <video controls class="mx-auto rounded-3xl shadow-xl max-w-3xl w-full">
+    <source src="WhatsApp Video 2024-11-20 at 01.04.36.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- GALERIA -->
+<section class="py-20 px-6">
+<h2 class="font-romantic text-5xl text-center mb-10">Nossa Galeria De Lembranças 📸</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+  <div class="polaroid"><img src="imagem.jpeg" class="w-full h-60 object-cover"></div>
+  <div class="polaroid"><img src="WhatsApp Image 2024-11-20 at 00.29.17.jpeg" class="w-full h-60 object-cover"></div>
+  <div class="polaroid"><img src="WhatsApp Image 2024-11-20 at 00.29.18 (1).jpeg" class="w-full h-60 object-cover"></div>
+  <div class="polaroid"><img src="WhatsApp Image 2024-11-20 at 00.29.19 (3).jpeg" class="w-full h-60 object-cover"></div>
+  <div class="polaroid"><img src="WhatsApp Image 2024-11-20 at 00.40.30 (1).jpeg" class="w-full h-60 object-cover"></div>
+  <div class="polaroid"><img src="WhatsApp Image 2024-11-20 at 00.40.33.jpeg" class="w-full h-60 object-cover"></div>
+  <div class="polaroid"><img src="WhatsApp Image 2024-11-20 at 00.40.37.jpeg" class="w-full h-60 object-cover"></div>
+  <div class="polaroid"><img src="2311724e-d55b-4837-a981-cf4b14bf35d9_Original.jpg" class="w-full h-60 object-cover"></div>
+  <div class="polaroid"><img src="IMG_3696_Original.jpg" class="w-full h-60 object-cover"></div>
+  <div class="polaroid"><img src="IMG_3713_Original.jpg" class="w-full h-60 object-cover"></div>
+  <div class="polaroid"><img src="IMG_5974_Original.jpg" class="w-full h-60 object-cover"></div>
+  <div class="polaroid"><img src="6f56de56-002c-46a0-a97e-9e7b050deb95_Original.jpg" class="w-full h-60 object-cover"></div>
+</div>
+</section>
+
+<!-- CARTA -->
+<section class="py-20 bg-pink-50 dark:bg-[#141421] px-6">
+<div class="max-w-2xl mx-auto bg-white dark:bg-[#1c1c28] p-10 rounded-3xl shadow-xl text-center">
+<h2 class="font-romantic text-5xl mb-6">Carta 💌</h2>
+<p id="letter" class="font-romantic text-2xl leading-relaxed opacity-0 transition"></p>
+<button id="btnLetter" class="mt-6 bg-pink-500 text-white px-8 py-4 rounded-full font-bold">
+Gerar Mensagem
+</button>
+</div>
+</section>
+
+<footer class="py-10 text-center opacity-60">
+<p class="font-romantic text-3xl">Para sempre nós 💖</p>
+</footer>
+
+<script>
+/* TEMPO */
+const startDate=new Date(2024,0,21);
+function updateTimer(){
+ const now=new Date();
+ let yv=now.getFullYear()-startDate.getFullYear();
+ let mv=now.getMonth()-startDate.getMonth();
+ let dv=now.getDate()-startDate.getDate();
+ if(dv<0){mv--;dv+=30;}
+ if(mv<0){yv--;mv+=12;}
+ y.textContent=yv; mo.textContent=mv; d.textContent=dv;
+ h.textContent=now.getHours();
+ mi.textContent=now.getMinutes();
+ s.textContent=now.getSeconds();
+}
+setInterval(updateTimer,1000);updateTimer();
+
+/* MENSAGENS */
+const messages=[
+"Vitória, amar você é a escolha mais bonita que já fiz.",
+"Seu sorriso é o lugar onde meu coração descansa.",
+"Você é meu hoje, meu amanhã e todos os meus sonhos.",
+"Cada detalhe seu me faz lembrar o quanto sou sortudo.",
+"Meu amor por você cresce mais que o tempo.",
+"Com você, até o silêncio é aconchegante.",
+"Você é o meu lar em qualquer lugar.",
+"Te amar é fácil, natural e eterno.",
+"Se amor tivesse nome, teria o seu.",
+"Obrigado por existir e caminhar comigo.",
+"Nosso amor é minha maior conquista.",
+"Você transforma dias comuns em memórias inesquecíveis.",
+"Meu coração sorri toda vez que pensa em você.",
+"Prometo te escolher todos os dias.",
+"Você é minha pessoa favorita no mundo."
+];
+
+btnLetter.onclick=()=>{
+ letter.textContent=messages[Math.floor(Math.random()*messages.length)];
+ letter.style.opacity=1;
+};
+
+/* MÚSICA */
+musicBtn.onclick=()=>music.paused?music.play():music.pause();
+
+/* MODO ESCURO */
+darkBtn.onclick=()=>{
+ document.body.classList.toggle("dark");
+ document.body.classList.toggle("light");
+ localStorage.theme=document.body.classList.contains("dark")?"dark":"light";
+ darkBtn.textContent=document.body.classList.contains("dark")?"☀️":"🌙";
+};
+if(localStorage.theme==="dark"){darkBtn.onclick();}
+
+/* ZOOM */
+document.querySelectorAll('.polaroid img').forEach(img=>{
+ img.onclick=()=>{zoomImg.src=img.src;zoom.style.display='flex';}
+});
+
+/* CORAÇÕES */
+setInterval(()=>{
+ const h=document.createElement("div");
+ h.className="heart";h.textContent="❤️";
+ h.style.left=Math.random()*100+"vw";
+ h.style.animationDuration=3+Math.random()*4+"s";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),7000);
+},700);
+</script>
+
+</body>
+</html>
