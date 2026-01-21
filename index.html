@@ -9,6 +9,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand&display=swap" rel="stylesheet">
 
 <style>
+/* Estilos da Tela de Bloqueio */
+#lock-screen {
+    position: fixed;
+    inset: 0;
+    background: #fffdfb;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-out;
+}
+.dark #lock-screen { background: #0f0f14; }
+
+.input-senha {
+    border: 2px solid #ec4899;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    outline: none;
+    background: transparent;
+    width: 200px;
+}
+
+/* Estilos Originais */
 body {
   font-family: Quicksand;
   transition: background .4s, color .4s;
@@ -63,23 +89,28 @@ body {
 
 <body class="light">
 
-<!-- MÚSICA -->
+<div id="lock-screen">
+    <div class="text-center p-6 bg-white dark:bg-[#1c1c28] rounded-3xl shadow-2xl border-2 border-pink-200">
+        <h2 class="font-romantic text-4xl mb-4 text-pink-500">Acesso Restrito 🔒</h2>
+        <p class="mb-4 opacity-70">Dica: O dia que tudo começou (DD/MM/AAAA)</p>
+        <input type="text" id="passwordInput" placeholder="00/00/0000" class="input-senha mb-4" maxlength="10">
+        <p id="errorMsg" class="text-red-500 text-sm hidden">Data incorreta, tente novamente ❤️</p>
+    </div>
+</div>
+
 <audio id="music" loop>
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<!-- BOTÕES -->
 <div class="fixed top-4 right-4 flex gap-3 z-50">
 <button id="musicBtn" class="bg-pink-500 text-white px-4 py-2 rounded-full">🎵</button>
 <button id="darkBtn" class="bg-gray-800 text-white px-4 py-2 rounded-full">🌙</button>
 </div>
 
-<!-- ZOOM -->
 <div id="zoom" onclick="this.style.display='none'">
   <img id="zoomImg">
 </div>
 
-<!-- HERO -->
 <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
   <h1 class="font-romantic text-7xl md:text-8xl mb-2">2 Anos</h1>
   <h2 class="font-romantic text-4xl md:text-5xl mb-4">Leonardo & Vitória</h2>
@@ -95,7 +126,6 @@ body {
   </div>
 </section>
 
-<!-- VÍDEO -->
 <section class="py-20 text-center bg-pink-50 dark:bg-[#141421] px-6">
   <h2 class="font-romantic text-5xl mb-8">Um Vídeo Antigo, Mais Com Um Significado Especial, Para Este Dia!  🎥</h2>
   <video controls class="mx-auto rounded-3xl shadow-xl max-w-3xl w-full">
@@ -103,7 +133,6 @@ body {
   </video>
 </section>
 
-<!-- GALERIA -->
 <section class="py-20 px-6">
 <h2 class="font-romantic text-5xl text-center mb-10">Nossa Galeria De Lembranças 📸</h2>
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -122,7 +151,6 @@ body {
 </div>
 </section>
 
-<!-- CARTA -->
 <section class="py-20 bg-pink-50 dark:bg-[#141421] px-6">
 <div class="max-w-2xl mx-auto bg-white dark:bg-[#1c1c28] p-10 rounded-3xl shadow-xl text-center">
 <h2 class="font-romantic text-5xl mb-6">Carta 💌</h2>
@@ -138,6 +166,32 @@ Gerar Mensagem
 </footer>
 
 <script>
+/* LÓGICA DA SENHA */
+const lockScreen = document.getElementById('lock-screen');
+const passwordInput = document.getElementById('passwordInput');
+const errorMsg = document.getElementById('errorMsg');
+
+// Máscara para o input (coloca as barras automaticamente)
+passwordInput.addEventListener('input', (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+    if (value.length > 2) value = value.substring(0,2) + "/" + value.substring(2);
+    if (value.length > 5) value = value.substring(0,5) + "/" + value.substring(5,9);
+    e.target.value = value;
+
+    if (value === "21/01/2024") {
+        lockScreen.style.opacity = "0";
+        setTimeout(() => {
+            lockScreen.style.display = "none";
+            // Tenta dar play na música automaticamente ao entrar (alguns browsers bloqueiam)
+            music.play().catch(() => console.log("Música aguardando interação"));
+        }, 500);
+    } else if (value.length === 10) {
+        errorMsg.classList.remove('hidden');
+    } else {
+        errorMsg.classList.add('hidden');
+    }
+});
+
 /* TEMPO */
 const startDate=new Date(2024,0,21);
 function updateTimer(){
